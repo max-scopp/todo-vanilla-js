@@ -1,0 +1,23 @@
+{
+  "name": "@auw/todo-vanilla",
+  "version": "1.0.0",
+  "description": "A simple TODO App for an intern.",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-scopp/todo-vanilla-js.git"
+  },
+  "author": "Maximilian Scopp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/max-scopp/todo-vanilla-js/issues"
+  },
+  "homepage": "https://github.com/max-scopp/todo-vanilla-js#readme",
+  "dependencies": {
+    "serve": "^10.0.0"
+  }
+}

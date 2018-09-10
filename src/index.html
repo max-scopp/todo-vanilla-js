@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible"
+            content="ie=edge">
+      <title>A simple TODO App.</title>
+
+      <script src="app.js"></script>
+
+      <template id="todo-item">
+            <div class="todo">
+
+                  <input type="checkbox"
+                         name="toggle" />
+                  <h4 class="todo-title">{{title}}</h4>
+
+                  <div class="todo-prio">
+                        <span class="todo-up"></span>
+                        <span class="todo-down"></span>
+                  </div>
+
+                  <div class="todo-description"
+                       contenteditable="true">
+                        {{description}}
+                  </div>
+            </div>
+      </template>
+
+      <template id="todo-page">
+
+            <h1>My Todos.</h1>
+            <h2 class="subline">You've got {{count}} todos.</h2>
+
+
+            <form class="new-todo">
+
+                  <input type="text"
+                         name="title">
+                  <button type="submit">Add Todo</button>
+
+            </form>
+
+
+            <ul class="list-todos">
+                  Your todos may still be loading.
+            </ul>
+
+      </template>
+</head>
+
+<body>
+
+      <div id="todos-app"></div>
+
+</body>
+
+</html>
