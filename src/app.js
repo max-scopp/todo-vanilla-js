@@ -3,15 +3,31 @@
 const STORAGE_KEY = "auw-todos";
 let idCounter = 0;
 
+/**
+ * Usually, you don't need such a strange function,
+ * because it's commonly handled by the Framework, or an even simpler method.
+ *
+ * But neither of that would suite this ToDo.
+ *
+ * @param {any} templateFragment
+ * @param {any} context
+ * @returns
+ */
 function compileTemplate(templateFragment, context) {
+  // var-string in two curly braces (inspired from Tyop3 FLOW)
   const regex = /\{{2}([^}]+)\}{2}/g;
+
+  // stage changes
   let changes = [];
 
   Array.from(templateFragment.children).map(node => {
+    // find all textNodes
     const nodes = document.evaluate("//text()", node);
     let currentTextNode;
 
     while ((currentTextNode = nodes.iterateNext()) != null) {
+      // test if textNode needs changes, if so, just stage them.
+      // Otherwise the iterating nodes will change before the next node can be accessed.
       if (regex.test(currentTextNode.data)) {
         changes.push([
           currentTextNode,
@@ -173,18 +189,25 @@ class TodoView {
   }
 }
 
+/*
+    Initialize logic
+*/
+
 document.addEventListener("DOMContentLoaded", () => {
   const renderRoot = document.getElementById("todos-app");
 
+  // get template which we want to render out
   const nodePageTemplate = document.getElementById("todo-page");
   const nodeTodoTemplate = document.getElementById("todo-item");
 
+  // make the view instance, which handle the two other classes.
   const appInstance = (window.appInstance = new TodoView(
     renderRoot,
     nodePageTemplate,
     nodeTodoTemplate
   ));
 
+  // pre-setup & inital paint
   appInstance.setupEventListeners();
   appInstance.renderTodos();
 });
